@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { urlConfig } from '../../config';
+import {urlConfig} from '../../config';
 
 function MainPage() {
     const [gifts, setGifts] = useState([]);
@@ -8,6 +8,7 @@ function MainPage() {
 
     useEffect(() => {
         // Task 1: Write async fetch operation
+        // Write your code below this line
         // fetch all gifts
         const fetchGifts = async () => {
             try {
@@ -23,7 +24,6 @@ function MainPage() {
                 console.log('Fetch error: ' + error.message);
             }
         };
-
         fetchGifts();
     }, []);
 
@@ -31,14 +31,14 @@ function MainPage() {
     const goToDetailsPage = (productId) => {
         // Write your code below this line
         navigate(`/app/product/${productId}`);
-    };
+      };
 
     // Task 3: Format timestamp
     const formatDate = (timestamp) => {
         // Write your code below this line
         const date = new Date(timestamp * 1000);
         return date.toLocaleDateString('default', { month: 'long', day: 'numeric', year: 'numeric' });
-    };
+      };
 
     const getConditionClass = (condition) => {
         return condition === "New" ? "list-group-item-success" : "list-group-item-warning";
@@ -60,6 +60,7 @@ function MainPage() {
                                     <div className="no-image-available">No Image Available</div>
                                 )}
                             </div>
+
                             <div className="card-body">
 
                                 {/* // Task 5: Display gift image or placeholder */}
@@ -67,12 +68,13 @@ function MainPage() {
                                 <h5 className="card-title">{gift.name}</h5>
 
                                 <p className={`card-text ${getConditionClass(gift.condition)}`}>
-                                    {gift.condition}
+                                {gift.condition}
                                 </p>
 
                                 {/* // Task 6: Display gift image or placeholder */}
                                 {/* // Write your code below this line */}
                                 <p className="card-text">{formatDate(gift.date_added)}</p>
+                                
 
                                 <button onClick={() => goToDetailsPage(gift.id)} className="btn btn-primary">
                                     View Details
